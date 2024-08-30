@@ -18,9 +18,10 @@ export function validateUpdateRequestBody(
       typeof request.image === 'string',
       'image must be set and must be a string'
     );
+    const datetimePattern = /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}:\d{2}(?:\.\d{3})?(?:[+-]\d{2}:\d{2}|Z)?)?$/;
     assert(
-      request.measure_datetime instanceof Date && !isNaN(request.measure_datetime.getTime()),
-      'measure_datetime must be set and must be a Date object'
+      typeof request.measure_datetime === 'string' && datetimePattern.test(request.measure_datetime),
+      'measure_datetime must be a valid ISO 8601 datetime string'
     );
     assert(
       typeof request.measure_type === 'string',
@@ -35,13 +36,13 @@ export function validateUpdateRequestBody(
   return ({
     image: request.image,
     customer_code: request.customer_code,
-    measure_datetime: request.measure_datetime,
+    measure_datetime: new Date(request.measure_datetime),
     measure_type: formatMeasureType(request.measure_type)
   })
 }
 
 export function validateConfirmeMeasureRequestBody(
-request: ConfirmMeasurementRequest
+  request: ConfirmMeasurementRequest
 ): ConfirmMeasurementRequest {
   try {
     assert(
@@ -69,8 +70,8 @@ export interface validateDuplicateMeasureFields {
   customer_code: string
 }
 export async function validateDuplicateMeasure(
-  repository: MeasurementRepository, 
-  data: validateDuplicateMeasureFields, 
+  repository: MeasurementRepository,
+  data: validateDuplicateMeasureFields,
 ): Promise<void> {
   const month = data.measure_datetime.getMonth() + 1;
   const year = data.measure_datetime.getFullYear();

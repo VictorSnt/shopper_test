@@ -53,7 +53,7 @@ export class CustomerMeasureNotFoundException extends CustomError {
   public status: number = 404
   public response: AlreadyMesuredResponse = {
     error_code: 'MEASURE_NOT_FOUND',
-    error_description: 'Nenhum registro encontrado'
+    error_description: 'Nenhuma leitura encontrada'
   }
 
   constructor(message = 'Resource not found') {
