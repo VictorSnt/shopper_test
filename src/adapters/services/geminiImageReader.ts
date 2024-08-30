@@ -20,7 +20,7 @@ export class GeminiImageReader implements ImageReader {
       mimeType: 'image/jpeg',
       displayName: 'Measurement device',
     });
-    
+
     const operation = async () => {
       return await this.generativeAI.generateContent([
         {
@@ -34,10 +34,10 @@ export class GeminiImageReader implements ImageReader {
     };
 
     const result = await this.retryOperation(operation, 3, 10000);
-    const numericString = extractNumericContent(result.response.text());
+    const measureValue = extractNumericContent(result.response.text());
     const response: UploadAndProcessImageResponse = {
       imageUrl: uploadResponse.file.uri,
-      measureValue: parseInt(numericString),
+      measureValue: measureValue,
     };
     return response;
   }

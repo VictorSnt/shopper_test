@@ -11,15 +11,17 @@ export function formatMeasureType(value: string): MeasureType {
 }
 
 
-export function extractNumericContent(text: string): string {
+export function extractNumericContent(text: string): number {
   
   const firstDigitIndex = text.search(/\d/);
   const lastDigitIndex = text.search(/\d(?!.*\d)/);
 
   if (firstDigitIndex === -1 || lastDigitIndex === -1) {
-    return '';
+    return 0;
   }
 
   const substring = text.substring(firstDigitIndex, lastDigitIndex + 1);
-  return substring.replace(/[^0-9.]/g, '');
+  const numberString = substring.replace(/[^0-9.]/g, '');
+  const measure = parseInt(numberString);
+  return isNaN(measure)? 0 : measure
 }
