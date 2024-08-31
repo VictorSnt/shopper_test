@@ -5,7 +5,7 @@ import { AppDataSource } from '../config/data-source';
 import { TypeORMMeasurementRepository } from '../repositories/typeOrmMeasurementRepository';
 import { Measurement } from '../models/measurement';
 import { MeasureType } from '../../domain/enum/mesurementType';
-import { validateConfirmeMeasureRequestBody, validateDuplicateMeasure, validateUpdateRequestBody } from '../../application/util/vallidators';
+import { validateConfirmMeasurementRequestBody, validateDuplicateMeasure, validateUpdateRequestBody } from '../../application/util/vallidators';
 import { ConfirmMeasurement, ConfirmMeasurementRequest } from '../../application/usecases/confirmMeasurement';
 import { formatMeasureType } from '../../application/util/formaters';
 import { ListCustomerMeasures, ListCustomerMeasuresRequest } from '../../application/usecases/listCustomerMeasures';
@@ -90,7 +90,7 @@ export class MeasurementController {
     res: Response
   ): Promise<void> {
     try {
-      req.body = validateConfirmeMeasureRequestBody(req.body);
+      req.body = validateConfirmMeasurementRequestBody(req.body);
     } catch (error: any) {
       res.status(400).json({
         'error_code': 'INVALID_DATA',
