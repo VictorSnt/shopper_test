@@ -51,6 +51,7 @@ export class MeasurementController {
     } catch (error: any) {
       if (!error?.status) {
         res.status(500).json({ message: 'Oops something went wrong!' });
+        return;
       }
       res.status(error.status).json(error.response);
       return;
@@ -76,11 +77,13 @@ export class MeasurementController {
       )
 
       res.status(response.status).json(response.data);
+      return;
 
     } catch (error) {
       res.status(429).json({
         message: 'Oops too many request on generativeAI!'
       });
+      return;
     }
   }
 
@@ -115,9 +118,12 @@ export class MeasurementController {
         confirMeasurementRequest, repository
       );
       res.status(response.status).json(response.data)
+      return;
     } catch (error: any) {
       if (!error?.status) {
         res.status(500).json({ message: 'Oops something went wrong!' });
+        return;
+
       }
       res.status(error.status).json(error.response);
       return;
@@ -128,7 +134,7 @@ export class MeasurementController {
   public static async ListCustomerMeasurements(
     req: Request<
       { customer_code: string }, {},
-      ConfirmMeasurementRequest, { measure_type: MeasureType|null }
+      ConfirmMeasurementRequest, { measure_type: MeasureType | null }
     >,
     res: Response
   ): Promise<void> {
@@ -140,16 +146,17 @@ export class MeasurementController {
       }
     } catch (error) {
       res.status(400).json({
-        error_code: 'INVALID_TYPE', 
+        error_code: 'INVALID_TYPE',
         error_description: 'Tipo de medição não permitida'
       })
+      return;
     }
 
     const repository = new TypeORMMeasurementRepository(
       AppDataSource.getRepository(Measurement).target,
       AppDataSource.manager,
     );
-   
+
     const listCustomersRequest: ListCustomerMeasuresRequest = {
       customer_code: req.params.customer_code,
       measure_type: req.query.measure_type ?? null
@@ -161,9 +168,12 @@ export class MeasurementController {
         listCustomersRequest, repository
       );
       res.status(response.status).json(response.data)
+      return;
     } catch (error: any) {
       if (!error?.status) {
         res.status(500).json({ message: 'Oops something went wrong!' });
+        return;
+
       }
       res.status(error.status).json(error.response);
       return;
