@@ -72,7 +72,7 @@ export class ImageProcessingService {
     try {
       await fs.access(filePath);
       await fs.unlink(filePath);
-      console.log(`File deleted successfully: ${filePath}`);
+      
     } catch (error: any) {
       if (error.code === 'ENOENT') {
         console.error(`File not found: ${filePath}`);
