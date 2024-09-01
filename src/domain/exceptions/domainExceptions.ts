@@ -1,62 +1,68 @@
-class CustomError extends Error {
-  constructor(message: string) {
+export class DomainException extends Error {
+  public status!: number
+  public response!: BaseErrorResponse
+  
+  constructor(message?: string) {
     super(message);
-    this.name = this.constructor.name;
-    Object.setPrototypeOf(this, new.target.prototype);
+    
   }
 }
 
-interface AlreadyMesuredResponse {
-  error_code: string,
+interface BaseErrorResponse {
+  error_code: string
   error_description: string
 }
 
-export class AlreadyMesuredException extends CustomError {
-
+export class AlreadyMesuredException extends DomainException {
   public status: number = 409
-  public response: AlreadyMesuredResponse = {
+  public response: BaseErrorResponse = {
     error_code: 'DOUBLE_REPORT',
-    error_description: 'Leitura do mês já realizada'
-  }
-
-  constructor(message = 'Resource not found') {
-    super(message);
+    error_description: 'Leitura do mês já realizada',
   }
 }
 
-export class MeasureNotFoundException extends CustomError {
+export class MeasureNotFoundException extends DomainException {
   public status: number = 404
-  public response: AlreadyMesuredResponse = {
+  public response: BaseErrorResponse = {
     error_code: 'MEASURE_NOT_FOUND',
-    error_description: 'Leitura do mês já realizada'
-  }
-
-  constructor(message = 'Resource not found') {
-    super(message);
+    error_description: 'Leitura do mês já realizada',
   }
 }
 
-export class MeasureAlreadyConfirmedException extends CustomError {
+export class MeasureAlreadyConfirmedException extends DomainException {
   public status: number = 409
-  public response: AlreadyMesuredResponse = {
+  public response: BaseErrorResponse = {
     error_code: 'CONFIRMATION_DUPLICATE',
-    error_description: 'Leitura do mês já realizada'
-  }
-
-
-  constructor(message = 'confirmed already') {
-    super(message);
+    error_description: 'Leitura do mês já realizada',
   }
 }
 
-export class CustomerMeasureNotFoundException extends CustomError {
+export class CustomerMeasureNotFoundException extends DomainException {
   public status: number = 404
-  public response: AlreadyMesuredResponse = {
+  public response: BaseErrorResponse = {
     error_code: 'MEASURE_NOT_FOUND',
-    error_description: 'Nenhuma leitura encontrada'
+    error_description: 'Nenhum registro encontrado',
   }
+}
 
-  constructor(message = 'Resource not found') {
-    super(message);
+export class MeasureTypeInvalidException extends DomainException {
+  public status: number = 400
+  public response: BaseErrorResponse = {
+    error_code: 'INVALID_TYPE',
+    error_description: 'Tipo de medição não permitida',
   }
+}
+
+
+export class InvalidArgsException extends DomainException {
+  public status: number = 400
+  public response: BaseErrorResponse = {
+    error_code: 'INVALID_DATA',
+    error_description: 'Tipo de medição não permitida',
+  }
+  constructor(error_description: string, msg?: string) {
+    super(msg)
+    this.response.error_description = error_description;
+  }
+  
 }
