@@ -1,9 +1,10 @@
+import { MeasureTypeInvalidException } from 'domain/exceptions/domainExceptions';
 import { MeasureType } from '../../domain/enum/mesurementType';
 
 export function formatMeasureType(value: string): MeasureType {
   const upperValue = value.toUpperCase();
   if (!Object.values(MeasureType).includes(upperValue as MeasureType)) {
-    throw new Error(
+    throw new MeasureTypeInvalidException(
       'MeasureType must be "WATER" or "GAS" lowercase or uppercase'
     )
   }

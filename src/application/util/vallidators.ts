@@ -2,7 +2,7 @@ import { strict as assert, AssertionError } from 'assert';
 import { UploadMeasurementControllerRequestBody } from '../../adapters/controllers/measurementController';
 import { MeasurementRepository } from '../../domain/repositories/mesurementRepository';
 import { MeasureType } from '../../domain/enum/mesurementType';
-import { AlreadyMesuredException } from '../../domain/exceptions/domainExceptions';
+import { AlreadyMesuredException, InvalidArgsException } from '../../domain/exceptions/domainExceptions';
 import { formatMeasureType } from './formaters';
 import { ConfirmMeasurementRequest } from '../../application/usecases/confirmMeasurement';
 
@@ -68,7 +68,7 @@ function validateIntegerField(value: any, fieldName: string): void {
 
 function handleValidationError(error: any): void {
   if (error instanceof AssertionError) {
-    throw new Error(`Validation error: ${error.message}`);
+    throw new InvalidArgsException(`Validation error: ${error.message}`)
   }
   throw error;
 }
