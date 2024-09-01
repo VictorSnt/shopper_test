@@ -1,4 +1,4 @@
-import { MeasureTypeInvalidException } from 'domain/exceptions/domainExceptions';
+import { MeasureTypeInvalidException } from '../../domain/exceptions/domainExceptions';
 import { MeasureType } from '../../domain/enum/mesurementType';
 
 export function formatMeasureType(value: string): MeasureType {

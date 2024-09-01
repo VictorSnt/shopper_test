@@ -3,6 +3,7 @@ import { FileManager } from '../../domain/interfaces/fileManager';
 import { GenerativeAI } from '../../domain/interfaces/generativeAi';
 import { UploadAndProcessImageResponse } from '../../application/usecases/uploadAndProcessImage';
 import { extractNumericContent } from '../../application/util/formaters';
+import { TimeoutException } from '../../domain/exceptions/domainExceptions';
 
 export class GeminiImageReader implements ImageReader {
   private fileManager: FileManager;
@@ -58,6 +59,6 @@ export class GeminiImageReader implements ImageReader {
         }
       }
     }
-    throw new Error(`Operation failed after ${maxRetries} attempts: ${lastError.message}`);
+    throw new TimeoutException(`Operation failed after ${maxRetries} attempts: ${lastError.message}`);
   }
 }

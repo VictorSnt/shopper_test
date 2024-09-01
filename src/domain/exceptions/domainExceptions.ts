@@ -1,10 +1,10 @@
 export class DomainException extends Error {
   public status!: number
   public response!: BaseErrorResponse
-  
+
   constructor(message?: string) {
     super(message);
-    
+
   }
 }
 
@@ -64,5 +64,17 @@ export class InvalidArgsException extends DomainException {
     super(msg)
     this.response.error_description = error_description;
   }
-  
+}
+
+export class TimeoutException extends DomainException {
+  public status: number = 408
+  public response: BaseErrorResponse = {
+    error_code: 'REQUEST_TIMEOUT',
+    error_description: 'Falha ao processar!, Por favor tente novamente',
+  }
+  constructor(error_description?: string, msg?: string) {
+    super(msg)
+    this.response.error_description = (
+      error_description ?? this.response.error_description);
+  }
 }
