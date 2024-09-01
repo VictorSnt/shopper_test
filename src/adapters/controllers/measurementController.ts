@@ -9,7 +9,7 @@ import { TypeORMMeasurementRepository } from '../repositories/typeOrmMeasurement
 import { Measurement } from '../models/measurement'
 import { MeasureType } from '../../domain/enum/mesurementType'
 import {
-  validateConfirmeMeasureRequestBody,
+  validateConfirmMeasurementRequestBody,
   validateDuplicateMeasure,
   validateUpdateRequestBody,
 } from '../../application/util/vallidators'
@@ -88,7 +88,7 @@ export class MeasurementController {
   ): Promise<void> {
     try {
 
-      req.body = validateConfirmeMeasureRequestBody(req.body)
+      req.body = validateConfirmMeasurementRequestBody(req.body)
 
 
       const repository = new TypeORMMeasurementRepository(
