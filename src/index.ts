@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import { AppDataSource } from './adapters/config/data-source';
 
 const app: Application = express();
-const port: number = 3000;
+const PORT = process.env.PORT || 3000;
 
 
 AppDataSource.initialize().then(() => {
@@ -19,8 +19,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/', measureRouter);
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
 
 process.on('SIGINT', async () => {
