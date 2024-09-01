@@ -5,6 +5,7 @@ import { MeasurementRepository } from '../../domain/repositories/mesurementRepos
 export class ConfirmMeasureService {
   constructor(private readonly repository: MeasurementRepository) { }
 
+  
   async findValidMeasure(measurementId: string): Promise<Measurement> {
     const measure = await this.repository.findObj(measurementId);
     if (!measure) throw new MeasureNotFoundException('id Not found on Database');
