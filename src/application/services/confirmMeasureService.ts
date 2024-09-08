@@ -1,6 +1,6 @@
 import { Measurement } from '../../domain/entities/measurement';
 import { MeasureAlreadyConfirmedException, MeasureNotFoundException } from '../../domain/exceptions/domainExceptions';
-import { MeasurementRepository } from '../../domain/repositories/mesurementRepository';
+import { MeasurementRepository } from '../interfaces/mesurementRepository';
 
 export class ConfirmMeasureService {
   constructor(private readonly repository: MeasurementRepository) { }
@@ -24,5 +24,4 @@ export class ConfirmMeasureService {
     const result = await this.repository.confirmMeasure(measure, measureValue);
     return result
   }
-
 }

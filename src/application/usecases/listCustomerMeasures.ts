@@ -1,6 +1,6 @@
 
 import { ListCustomerMeasuresService } from '../services/listCustomerMeasuresService'
-import { MeasurementRepository } from '../../domain/repositories/mesurementRepository'
+import { MeasurementRepository } from '../interfaces/mesurementRepository'
 import { MeasurementDTO } from '../../domain/dto/measurementDTO'
 
 export interface ListCustomerMeasuresRequest {

@@ -2,7 +2,7 @@ import { v4 as uuidGen } from 'uuid';
 import { expect, it } from 'vitest';
 import { SaveMesurements, SaveMesurementsRequest } from './saveMesurement';
 import { MeasureType } from '../../domain/enum/mesurementType';
-import { InMemoryMeasurementRepository } from '../../domain/repositories/in_memory/inMemoryMeasurementRepository';
+import { InMemoryMeasurementRepository } from '../../adapters/repositories/in_memory/inMemoryMeasurementRepository';
 
 
 it('Save a Measurement on database', async () => {

@@ -22,9 +22,9 @@
   },
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "no-console": "warn", // Alerta sobre o uso de console.log
-    "import/no-unresolved": "error", // Garante que os módulos importados existam
-    "node/no-missing-import": "off" // Se você estiver usando TypeScript com módulos
+    "no-console": "warn", 
+    "import/no-unresolved": "error",
+    "node/no-missing-import": "off"
   },
   "settings": {
     "import/resolver": {

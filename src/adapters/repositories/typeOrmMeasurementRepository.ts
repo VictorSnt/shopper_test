@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
 import { Measurement as MeasurementModel } from '../models/measurement';
 import { Measurement as MeasurementEntitie } from '../../domain/entities/measurement';
-import { MeasurementRepository } from '../../domain/repositories/mesurementRepository';
+import { MeasurementRepository } from '../../application/interfaces/mesurementRepository';
 import { MeasureType } from 'domain/enum/mesurementType';
 
 

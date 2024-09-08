@@ -1,6 +1,7 @@
-import { Measurement } from 'domain/entities/measurement';
-import { MeasureType } from 'domain/enum/mesurementType';
-import { MeasurementRepository } from '../mesurementRepository';
+import { MeasurementRepository } from '../../../application/interfaces/mesurementRepository';
+import { Measurement } from '../../../domain/entities/measurement';
+import { MeasureType } from '../../../domain/enum/mesurementType';
+
 
 
 export class InMemoryMeasurementRepository implements MeasurementRepository {

@@ -1,7 +1,7 @@
 
-import { Measurement } from 'domain/entities/measurement';
-import { MeasureType } from 'domain/enum/mesurementType';
-import { MeasurementRepository } from 'domain/repositories/mesurementRepository';
+import { Measurement } from '../../domain/entities/measurement';
+import { MeasureType } from '../../domain/enum/mesurementType';
+import { MeasurementRepository } from '../../application/interfaces/mesurementRepository';
 
 
 export class MeasurementService {

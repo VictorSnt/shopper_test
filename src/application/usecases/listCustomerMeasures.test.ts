@@ -2,7 +2,7 @@ import { expect, it, beforeEach } from 'vitest';
 import { v4 as uuidv4 } from 'uuid';
 import { Measurement } from '../../domain/entities/measurement';
 import { ListCustomerMeasures, ListCustomerMeasuresRequest } from './listCustomerMeasures';
-import { InMemoryMeasurementRepository } from '../../domain/repositories/in_memory/inMemoryMeasurementRepository';
+import { InMemoryMeasurementRepository } from '../../adapters/repositories/in_memory/inMemoryMeasurementRepository';
 import { MeasureType } from 'domain/enum/mesurementType';
 
 let repo: InMemoryMeasurementRepository;

@@ -1,5 +1,5 @@
 import { GoogleAIFileManager } from '@google/generative-ai/server';
-import { FileManager } from '../../domain/interfaces/fileManager';
+import { FileManager } from '../../application/interfaces/fileManager';
 
 export class GoogleAIFileManagerAdapter implements FileManager {
   private apiKey: string;

@@ -11,7 +11,6 @@ export abstract class BaseEntitie extends BaseEntity {
   @Column({ type: 'boolean', default: true })
   public status!: boolean;
 
-  // Change to 'varchar' to store dates as strings in SQLite
   @Column({ type: 'varchar', length: 25, default: () => 'CURRENT_TIMESTAMP' })
   public created_at!: string;
 
@@ -21,7 +20,6 @@ export abstract class BaseEntitie extends BaseEntity {
   @Column({ type: 'varchar', length: 25, nullable: true })
   public deleted_at?: string;
   
-  // Optionally, you can add getter and setter to automatically convert to Date object
   public getCreatedAt(): Date {
       return new Date(this.created_at);
   }

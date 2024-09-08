@@ -1,5 +1,5 @@
-import { UploadAndProcessImageResponse } from 'application/usecases/uploadAndProcessImage';
-import { ImageReader } from 'domain/interfaces/imageReader';
+import { UploadAndProcessImageResponse } from '../usecases/uploadAndProcessImage';
+import { ImageReader } from '../interfaces/imageReader';
 import path from 'path';
 import sharp from 'sharp';
 import fs from 'fs/promises';

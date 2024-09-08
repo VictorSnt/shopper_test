@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GenerativeAI } from '../../domain/interfaces/generativeAi';
+import { GenerativeAI } from '../../application/interfaces/generativeAi';
 
 export class GoogleGenerativeAIAdapter implements GenerativeAI {
   private apiKey: string;

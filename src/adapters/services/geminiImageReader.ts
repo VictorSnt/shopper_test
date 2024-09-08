@@ -1,6 +1,6 @@
-import { ImageReader } from '../../domain/interfaces/imageReader';
-import { FileManager } from '../../domain/interfaces/fileManager';
-import { GenerativeAI } from '../../domain/interfaces/generativeAi';
+import { ImageReader } from '../../application/interfaces/imageReader';
+import { FileManager } from '../../application/interfaces/fileManager';
+import { GenerativeAI } from '../../application/interfaces/generativeAi';
 import { UploadAndProcessImageResponse } from '../../application/usecases/uploadAndProcessImage';
 import { extractNumericContent } from '../../application/util/formaters';
 import { TimeoutException } from '../../domain/exceptions/domainExceptions';

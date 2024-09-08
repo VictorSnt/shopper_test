@@ -1,5 +1,5 @@
-import { Measurement } from '../entities/measurement';
-import { MeasureType } from '../enum/mesurementType';
+import { Measurement } from '../../domain/entities/measurement';
+import { MeasureType } from '../../domain/enum/mesurementType';
 
 
 export interface MeasurementRepository {

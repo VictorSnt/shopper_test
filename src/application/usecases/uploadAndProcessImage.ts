@@ -3,6 +3,7 @@ import { ImageProcessingService } from '../services/imageProcessingService';
 import { GoogleAIFileManagerAdapter } from '../../adapters/services/googleFileManager';
 import { GoogleGenerativeAIAdapter } from '../../adapters/services/googleGenerativeAi';
 import { GeminiImageReader } from '../../adapters/services/geminiImageReader';
+import { GEMINI_API_KEY } from '../../adapters/config/enviroment';
 
 
 
@@ -22,17 +23,12 @@ export class UploadAndProcessImage {
 
     const { imageBase64String } = request;
     
-    if (!process.env.GEMINI_API_KEY) {
-      throw new Error('GEMINI_API_KEY must be set in .env file');
-    }
-    const fileManager = new GoogleAIFileManagerAdapter(process.env.GEMINI_API_KEY);
-    const generativeAI = new GoogleGenerativeAIAdapter(process.env.GEMINI_API_KEY);
+    const fileManager = new GoogleAIFileManagerAdapter(GEMINI_API_KEY);
+    const generativeAI = new GoogleGenerativeAIAdapter(GEMINI_API_KEY);
     const geminiReader = new GeminiImageReader(fileManager, generativeAI);
     const imgProcessor = new ImageProcessingService(geminiReader)
     const response = await imgProcessor.processImage(imageBase64String);
 
     return response;
   }
-
-
 }

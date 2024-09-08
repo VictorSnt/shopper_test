@@ -1,5 +1,5 @@
 import { formatMeasureType } from '../util/formaters';
-import { MeasurementRepository } from '../../domain/repositories/mesurementRepository';
+import { MeasurementRepository } from '../interfaces/mesurementRepository';
 import { CustomerMeasureNotFoundException } from '../../domain/exceptions/domainExceptions';
 import { MeasurementDTO } from '../../domain/dto/measurementDTO';
 
@@ -31,9 +31,8 @@ export class ListCustomerMeasuresService {
         measure_type: measure.measureType,
         has_confirmed: measure.confirmed,
         image_url: measure.image
-      })
+      } as MeasurementDTO)
     })
-
     return measurementDTOs;
   }
 }

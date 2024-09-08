@@ -2,7 +2,7 @@ import { expect, it } from 'vitest';
 import { UploadAndProcessImageRequest, UploadAndProcessImage } from './uploadAndProcessImage';
 import { readFileSync } from 'fs';
 import path from 'path';
-import { MockImageReader } from '../../domain/services/mockImageReader';
+import { MockImageReader } from '../../adapters/services/mockImageReader';
 
 it('Upload a valid image', async () => {
     const uploader = new MockImageReader();

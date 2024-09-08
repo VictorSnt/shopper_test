@@ -1,5 +1,5 @@
 import { ConfirmMeasureService } from '../services/confirmMeasureService'
-import { MeasurementRepository } from '../../domain/repositories/mesurementRepository'
+import { MeasurementRepository } from '../interfaces/mesurementRepository'
 
 export interface ConfirmMeasurementRequest {
   measure_uuid: string,
@@ -21,7 +21,7 @@ export class ConfirmMeasurement {
 
     const service = new ConfirmMeasureService(repository);
     const measurement = await service.findValidMeasure(request.measure_uuid);
-    const confirmed = service.confirmMeasurementValue(
+    const confirmed = await service.confirmMeasurementValue(
       measurement, request.confirmed_value
     );
 
@@ -35,6 +35,5 @@ export class ConfirmMeasurement {
         success: true
       }
     } as ConfirmMeasurementReponse)
-
   }
 }

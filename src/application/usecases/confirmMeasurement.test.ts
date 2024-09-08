@@ -1,9 +1,10 @@
 import { expect, it } from 'vitest';
 import { v4 as uuidv4 } from 'uuid';
-import { InMemoryMeasurementRepository } from '../../domain/repositories/in_memory/inMemoryMeasurementRepository';
+
 import { ConfirmMeasurement, ConfirmMeasurementRequest } from './confirmMeasurement';
 import { Measurement } from '../../domain/entities/measurement';
 import { MeasureType } from '../../domain/enum/mesurementType';
+import { InMemoryMeasurementRepository } from '../../adapters/repositories/in_memory/inMemoryMeasurementRepository';
 
 
 it('Confirm a Measurement', async () => {
