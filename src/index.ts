@@ -3,9 +3,9 @@ import cors from 'cors';
 import { router as measureRouter } from './adapters/routes/measurementRoutes';
 import bodyParser from 'body-parser';
 import { AppDataSource } from './adapters/config/data-source';
+import { PORT } from './adapters/config/enviroment';
 
 const app: Application = express();
-const PORT = process.env.PORT || 3000;
 
 
 AppDataSource.initialize().then(() => {
