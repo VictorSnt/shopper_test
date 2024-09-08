@@ -1,4 +1,3 @@
-import * as dotenv from 'dotenv';
 import { ImageProcessingService } from '../services/imageProcessingService';
 import { GoogleAIFileManagerAdapter } from '../../adapters/services/googleFileManager';
 import { GoogleGenerativeAIAdapter } from '../../adapters/services/googleGenerativeAi';
@@ -6,8 +5,6 @@ import { GeminiImageReader } from '../../adapters/services/geminiImageReader';
 import { GEMINI_API_KEY } from '../../adapters/config/enviroment';
 
 
-
-dotenv.config();
 export interface UploadAndProcessImageRequest {
   imageBase64String: string;
 }
